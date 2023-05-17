@@ -12,17 +12,44 @@ import org.openqa.selenium.chrome.ChromeOptions;
 
 public class Main {
     public static void main(String[] args) {
-       //ChromeOptions options=new ChromeOptions();
-       // options.addArguments("--remote-allow-origins=*");
-        //options.addArguments("disable-infobars");
-       //options.setExperimentalOption("excludeSwitches",new String[]{"enable-automation"});
+       ChromeOptions options=new ChromeOptions();
+        options.addArguments("--remote-allow-origins=*");
+        options.addArguments("disable-infobars");
+       options.setExperimentalOption("excludeSwitches",new String[]{"enable-automation"});
+        WebDriver driver=new ChromeDriver(options);
+       driver.manage().window().maximize();
 
-       //driver.manage().window().maximize();
-        //driver.get("https://www.facebook.com");
-        //System.out.println(driver.getTitle());
-       // driver.quit();
+       By emailBy= By.cssSelector("input#email.inputtext._55r1._1kbt");
+        By passwordBy= By.cssSelector("input#pass.inputtext._55r1._9npi");
+        By startbutton= By.cssSelector("button#loginbutton, button[name='login']");
+
+
+        System.out.println(driver.getTitle());
+        driver.get("https://www.facebook.com/login/");
+
+//Filling the details in Email and password plus clicking checkbox
+        WebElement loginElement=driver.findElement(emailBy);
+        System.out.println("Enter the email here");
+        loginElement.sendKeys("8628084430");
+
+        WebElement passwordElement=driver.findElement(passwordBy);
+
+        System.out.println("Enter the password here");
+        passwordElement.sendKeys("Sapehiya$000");
+
+       WebElement startBtn=driver.findElement(startbutton);
+        startBtn.click();
+        System.out.println(driver.getCurrentUrl());
+
+
+
+        //WebElement resetElement=driver.findElement(resetemail);
+        //resetElement.clear();
+        //System.out.println("Provide Email");
+        //resetElement.sendKeys("nkb25200@gmail.com");
+        //driver.quit();
 // TODO Auto-generated method stub
-        By startbutton= By.cssSelector("div.hero-content-5 a[href=\"/course/\"]");
+     /*   By startbutton= By.cssSelector("div.hero-content-5 a[href=\"/course/\"]");
         //   By joinUsBy= By.cssSelector("ul.main-menu a[href='/teachers/join-us/']");
         By joinUsBy= By.cssSelector("div.header-menu ul a[href=\"/teachers/join-us/\"]");
         By emailBy= By.cssSelector("div.form-alert-input input[id='id_login']");
@@ -88,9 +115,9 @@ public class Main {
 
         resetElement.clear();
 
-        System.out.println("Khatam tata bye");
+        System.out.println("Khatam tata bye");*/
 
-    }
-}
+
+} }
 
 
